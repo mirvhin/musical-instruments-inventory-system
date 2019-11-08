@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <span>Musical Instruments Inventory</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav-menu">
+    <mat-list>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <button mat-button class="menu-button" (click)="goTo('/items')">All Items</button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <button mat-button class="menu-button" (click)="goTo('/sold')">Sold Items</button>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

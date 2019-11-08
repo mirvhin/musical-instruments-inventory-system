@@ -1,0 +1,55 @@
+type Mutation {
+    login(input: LoginRequest): User
+    addItem(input: CreateItemRequest): Item
+    updateItem(input: UpdateItemRequest): Item
+}
+
+type Query {
+    item(id: ID!): Item
+    items(sold: Boolean): PagedList
+    allItems: PagedList
+}
+
+# Input Models
+
+input CreateItemRequest {
+    category: String
+    brand: String
+    description: String
+}
+
+input LoginRequest {
+    username: String!
+    password: String!
+}
+
+input UpdateItemRequest {
+    id: ID
+    category: String
+    brand: String
+    description: String
+    sold: Boolean
+}
+
+# Type Models
+
+union Model = Item | User
+
+type PagedList {
+    total: Int!
+    data: [Item]
+}
+
+type Item {
+    id: ID!
+    created: Int!
+    updated: Int!
+    category: String
+    brand: String
+    description: String
+    sold: Boolean
+}
+
+type User {
+    username: String
+}
